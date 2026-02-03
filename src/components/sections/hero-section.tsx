@@ -69,7 +69,7 @@ export function HeroSection() {
           isLoading && "opacity-0"
         )}
       >
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight drop-shadow-lg mb-4">
+        <h1 className="text-[calc(1.2*3.75rem)] md:text-[calc(1.2*4.5rem)] font-light tracking-tight drop-shadow-lg mb-4">
           AIMA Architecture and Engineering
         </h1>
         <p className="max-w-2xl text-lg md:text-xl text-primary-foreground/90 drop-shadow-md mb-8">
