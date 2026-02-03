@@ -48,7 +48,7 @@ export function HeroSection() {
       {/* Parallax Background Image */}
       {heroImage && (
         <Image
-          src={heroImage.imageUrl}
+          src="/theedgevector.png"
           alt={heroImage.description}
           fill
           className="object-cover transition-opacity duration-1000 ease-in-out"
