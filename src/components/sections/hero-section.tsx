@@ -40,7 +40,7 @@ export function HeroSection() {
           !isLoading && "opacity-0 pointer-events-none"
         )}
       >
-        <h1 className="text-8xl md:text-9xl font-black text-primary tracking-tighter animate-pulse">
+        <h1 className="text-8xl md:text-9xl font-light text-primary tracking-tighter animate-pulse">
           AIMA
         </h1>
       </div>
@@ -69,7 +69,7 @@ export function HeroSection() {
           isLoading && "opacity-0"
         )}
       >
-        <h1 className="text-[calc(1.2*3.75rem)] md:text-[calc(1.2*4.5rem)] font-light tracking-tight drop-shadow-lg mb-4">
+        <h1 className="text-[calc(1.2*3.75rem)] md:text-[calc(1.2*4.5rem)] font-extralight tracking-tight drop-shadow-lg mb-4">
           AIMA Architecture and Engineering
         </h1>
         <p className="max-w-2xl text-lg md:text-xl text-primary-foreground/90 drop-shadow-md mb-8">
