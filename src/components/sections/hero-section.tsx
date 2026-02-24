@@ -40,27 +40,52 @@ export function HeroSection() {
           !isLoading && "opacity-0 pointer-events-none"
         )}
       >
-        <h1 className="text-8xl md:text-9xl font-light text-primary tracking-tighter animate-pulse">
-          AIMA
-        </h1>
+        <h1 className="flex items-center gap-4 text-8xl md:text-9xl font-light text-primary tracking-tighter animate-pulse">
+  {/* El Logo */}
+  <Image 
+    src="/aimalogo.svg" 
+    alt="AIMA Logo" 
+    width={100} // Ajusta el tamaño según te guste
+    height={100} 
+    className="w-20 h-20 md:w-28 md:h-28 object-contain"
+  />
+  {/* El Texto */}
+  <span>AIMA</span>
+</h1>
+      </div>
+
+      {/* Logo fijo en la esquina superior izquierda */}
+      <div 
+        className={cn(
+          "fixed top-4 left-6 md:top-6 md:left-10 z-[110] transition-opacity duration-1000",
+          isLoading ? "opacity-0" : "opacity-100"
+        )}
+      >
+        <Link href="/">
+          <Image 
+            src="/aimalogo.svg" 
+            alt="AIMA Logo" 
+            width={50} 
+            height={50} 
+            style={{ filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))" }}
+            className="w-10 h-10 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform duration-300"
+          />
+        </Link>
       </div>
 
       {/* Parallax Background Image */}
-      {heroImage && (
-        <Image
+      <div className="absolute inset-0 z-0">
+        <img
           src="/theedgevector.png"
-          alt={heroImage.description}
-          fill
-          className="object-cover transition-opacity duration-1000 ease-in-out"
+          alt="Portada"
+          className="w-full h-full object-cover"
           style={{
             transform: `translateY(${offsetY * 0.4}px)`,
-            opacity: isLoading ? 0 : 1,
           }}
-          priority
-          data-ai-hint={heroImage.imageHint}
         />
-      )}
-      <div className="absolute inset-0 bg-primary/40 dark:bg-primary/60" />
+        {/* Capa de color (Overlay) */}
+        {/*<div className="absolute inset-0 bg-primary/40 dark:bg-primary/60 z-10" />*/}
+      </div>
 
       {/* Hero Content */}
       <div
