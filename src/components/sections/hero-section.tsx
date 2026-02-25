@@ -43,11 +43,12 @@ export function HeroSection() {
         <h1 className="flex items-center gap-4 text-8xl md:text-9xl font-light text-primary tracking-tighter animate-pulse">
   {/* El Logo */}
   <Image 
-    src="/aimalogo.svg" 
+    src="/aimaLogoNegro2.png" 
     alt="AIMA Logo" 
-    width={100} // Ajusta el tamaño según te guste
-    height={100} 
-    className="w-20 h-20 md:w-28 md:h-28 object-contain"
+    width={150} // Aumentamos de 100 a 150
+    height={150} 
+    /* Cambiamos w-20 por w-24 (móvil) y md:w-28 por md:w-36 (PC) */
+    className="w-24 h-24 md:w-36 md:h-36 object-contain"
   />
   {/* El Texto */}
   <span>AIMA</span>
@@ -63,7 +64,7 @@ export function HeroSection() {
       >
         <Link href="/">
           <Image 
-            src="/aimalogo.svg" 
+            src="/aimaLogoBlanco.png" 
             alt="AIMA Logo" 
             width={50} 
             height={50} 
