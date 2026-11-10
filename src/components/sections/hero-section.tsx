@@ -1,120 +1,85 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowDown } from "lucide-react";
+import { HeroDiagram } from "./hero-diagram";
 
 export function HeroSection() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [offsetY, setOffsetY] = useState(0);
-
-  const heroImage = PlaceHolderImages.find((img) => img.id === "hero-the-edge");
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000); // Animation duration
-    
-    const handleScroll = () => {
-      if (window.scrollY < window.innerHeight) {
-        setOffsetY(window.pageYOffset);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* Loading Animation */}
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-[#0B0F14] py-24 text-[#F3F4F9] md:py-32"
+    >
       <div
-        className={cn(
-          "fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000 ease-in-out",
-          !isLoading && "opacity-0 pointer-events-none"
-        )}
-      >
-        <h1 className="flex items-center gap-4 text-8xl md:text-9xl font-light text-primary tracking-tighter animate-pulse">
-  {/* El Logo */}
-  <Image 
-    src="/aimaLogoNegro2.png" 
-    alt="AIMA Logo" 
-    width={150} // Aumentamos de 100 a 150
-    height={150} 
-    /* Cambiamos w-20 por w-24 (móvil) y md:w-28 por md:w-36 (PC) */
-    className="w-24 h-24 md:w-36 md:h-36 object-contain"
-  />
-  {/* El Texto */}
-  <span>AIMA</span>
-</h1>
-      </div>
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(139,179,255,0.12) 1px, transparent 1px), linear-gradient(115deg, transparent 18%, rgba(91,141,239,0.08) 54%, rgba(139,108,246,0.06) 72%, transparent 92%)",
+          backgroundSize: "34px 34px, 100% 100%",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at 65% 30%, black 0%, transparent 70%)",
+          maskImage:
+            "radial-gradient(ellipse at 65% 30%, black 0%, transparent 70%)",
+        }}
+      />
 
-      {/* Logo fijo en la esquina superior izquierda */}
-      <div 
-        className={cn(
-          "fixed top-4 left-6 md:top-6 md:left-10 z-[110] transition-opacity duration-1000",
-          isLoading ? "opacity-0" : "opacity-100"
-        )}
-      >
-        <Link href="/">
-          <Image 
-            src="/aimaLogoBlanco.png" 
-            alt="AIMA Logo" 
-            width={50} 
-            height={50} 
-            style={{ filter: "drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))" }}
-            className="w-10 h-10 md:w-14 md:h-14 object-contain hover:scale-110 transition-transform duration-300"
-          />
-        </Link>
-      </div>
+      <div className="relative mx-auto grid max-w-[1200px] items-center gap-10 px-5 md:grid-cols-[1.15fr_0.85fr] md:gap-12 md:px-10 lg:px-16">
+        <div>
+          <div className="mb-4 flex items-center gap-2">
+            <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-5 w-5 flex-shrink-0">
+              <circle cx="10" cy="10" r="7" stroke="#D4652F" strokeWidth="1.4" />
+              <line x1="10" y1="1" x2="10" y2="5" stroke="#D4652F" strokeWidth="1.4" />
+              <line x1="10" y1="15" x2="10" y2="19" stroke="#D4652F" strokeWidth="1.4" />
+              <line x1="1" y1="10" x2="5" y2="10" stroke="#D4652F" strokeWidth="1.4" />
+              <line x1="15" y1="10" x2="19" y2="10" stroke="#D4652F" strokeWidth="1.4" />
+            </svg>
+            <span className="font-code text-xs uppercase tracking-widest text-[#9FB0CC]">
+              AIMA BIM — Paraná, AR
+            </span>
+          </div>
 
-      {/* Parallax Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/theedgevector.png"
-          alt="Portada"
-          className="w-full h-full object-cover"
-          style={{
-            transform: `translateY(${offsetY * 0.4}px)`,
-          }}
-        />
-        {/* Capa de color (Overlay) */}
-        {/*<div className="absolute inset-0 bg-primary/40 dark:bg-primary/60 z-10" />*/}
-      </div>
+          <h1 className="max-w-[16ch] font-headline text-4xl font-extrabold leading-tight md:text-6xl">
+            Working for the{" "}
+            <span className="text-[#5B8DEF]">AECO sector</span>
+          </h1>
 
-      {/* Hero Content */}
-      <div
-        className={cn(
-          "relative z-10 flex h-full flex-col items-center justify-center text-center text-primary-foreground transition-opacity duration-1000 ease-in-out px-4",
-          isLoading && "opacity-0"
-        )}
-      >
-        <h1 className="text-[calc(1.2*3.75rem)] md:text-[calc(1.2*4.5rem)] font-extralight tracking-tight drop-shadow-lg mb-4">
-          AIMA Architecture and Engineering
-        </h1>
-        <p className="max-w-2xl text-lg md:text-xl text-primary-foreground/90 drop-shadow-md mb-8">
-          Pioneering digital transformation in the AEC industry with expert BIM
-          solutions, consulting, and software development.
-        </p>
-        <Button size="lg" asChild>
-          <Link href="#services">Explore Our Services</Link>
-        </Button>
-      </div>
+          <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-[#C9CFDD]">
+            A nearshore team that models, coordinates, and delivers — so your
+            firm keeps the client relationship, the schedule, and the sign-off.
+          </p>
 
-      {/* Scroll Down Indicator */}
-      <div
-        className={cn(
-          "absolute bottom-10 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-1000",
-          isLoading && "opacity-0"
-        )}
-      >
-        <ArrowDown className="h-8 w-8 text-primary-foreground animate-bounce" />
+          <div className="mt-9 flex flex-wrap gap-4">
+            <a
+              href="#contact"
+              className="inline-flex items-center rounded-full bg-[#5B8DEF] px-6 py-3 font-code text-xs font-semibold uppercase tracking-wide text-white transition hover:-translate-y-0.5 hover:bg-[#3F6FD6] hover:shadow-[0_8px_22px_-8px_rgba(91,141,239,0.55)]"
+            >
+              Schedule a Discovery Call
+            </a>
+            <a
+              href="#services"
+              className="inline-flex items-center rounded-full border border-white/40 px-6 py-3 font-code text-xs font-semibold uppercase tracking-wide text-[#F3F4F9] transition hover:border-white hover:bg-white/10"
+            >
+              See Capabilities
+            </a>
+          </div>
+
+          <div className="mt-11 flex flex-wrap gap-2.5">
+            {[
+              "Revit & Navisworks fluent",
+              "LOD 300–400 delivery",
+              "Eastern / Central overlap",
+              "Native-quality English",
+            ].map((label) => (
+              <span
+                key={label}
+                className="rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 font-code text-xs text-[#D6DCE9]"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center md:justify-end">
+          <HeroDiagram />
+        </div>
       </div>
     </section>
   );
